@@ -53,3 +53,28 @@ for cs in range (test_cases):
     findZigZagSequence(a, n)
 
 */
+
+export const findZigZagSequence = (arr: number[]) => {
+  // sort array`
+  arr.sort();
+  // reverse mid and last element, to have max in middle
+  const n = arr.length;
+  const mid = (n + 1) / 2 - 1;
+  [arr[mid], arr[n - 1]] = [arr[n - 1], arr[mid]];
+  // in 2nd half, reverse elements
+  let start = mid + 1,
+    end = n - 2;
+  while (start < end) {
+    [arr[start], arr[end]] = [arr[end], arr[start]];
+    start++;
+    end--;
+  }
+  // print element in single line
+  // for (let index = 0; index < arr.length; index++) {
+  //   const element = arr[index];
+  console.log(arr.join(" "));
+  // }
+};
+
+const array = [2, 3, 5, 1, 4];
+findZigZagSequence(array);
