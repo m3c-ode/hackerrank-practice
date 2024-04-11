@@ -41,6 +41,18 @@ Constraints
 
  */
 
+function superDigitOther(n: string, k: number): number {
+  let sum = 0;
+  for (const digit of n) {
+    sum += Number(digit);
+  }
+  sum *= k;
+  if (sum >= 10) {
+    sum = superDigitOther(sum.toString(), 1);
+  }
+  return sum;
+}
+
 export function superDigitMe(n: string, k: number): number {
   let res = 0;
   res = calculateSuperDigit(n);
@@ -92,3 +104,4 @@ console.log(superDigitMe(digits, 3));
 
 console.log(superDigit(digits, 3));
 console.log(superDigitRed(digits, 3));
+console.log(superDigitOther(digits, 3));
